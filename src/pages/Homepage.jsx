@@ -4,14 +4,58 @@ import instagram from "../assets/images/instagram.png";
 import tiktok from "../assets/images/tiktok.png";
 import twitter from "../assets/images/twitter.png";
 import Navbar from "../components/navBar.jsx";
+import border from "../assets/images/border.png";
+import ImageSlider from "../components/fadePictures.jsx";
 
 function Homepage() {
   return (
     <>
       <Navbar />
       <div className="bg-lightPink w-full h-screen">
-        <div className="flex justify-between items-start pt-4 px-4 overflow-hidden"></div>
+        <div className="flex flex-col justify-center items-center pt-4 px-4 overflow-hidden h-screen w-full relative">
+          <img
+            src={border}
+            className="object-contain absolute left-0 w-full h-full"
+            style={{ top: "-50px" }}
+          />
+          <div className="flex flex-col justify-center items-center h-full w-full px-8 z-10 mt-[-130px] space-y-5">
+            <h1 className="text-red font-Texterius text-3xl md:text-6xl lg:text-8xl text-center">
+              Find your next project!
+            </h1>
+            <div className="flex flex-row justify-center items-center space-x-5 mt-5">
+              <ImageSlider
+                images={[
+                  "./src/assets/images/1.jpeg",
+                  "./src/assets/images/2.jpeg",
+                  "./src/assets/images/3.jpeg",
+                ]}
+              />
+              <ImageSlider
+                images={[
+                  "./src/assets/images/4.jpeg",
+                  "./src/assets/images/5.jpeg",
+                  "./src/assets/images/6.jpeg",
+                ]}
+              />
+              <ImageSlider
+                images={[
+                  "./src/assets/images/7.jpeg",
+                  "./src/assets/images/8.jpeg",
+                  "./src/assets/images/9.jpeg",
+                ]}
+              />
+            </div>
+            <p className="text-red font-Texterius text-md md:text-lg lg:text-2xl text-center">
+              Discover and share creative craft projects with
+              <br /> a vibrant community
+            </p>
+            <button className="bg-red text-beige font-Texterius text-xl py-3 px-9 rounded-full">
+              <a href="#discover">Explore</a>
+            </button>
+          </div>
+        </div>
       </div>
+
       <div
         className="bg-beige w-screen flex justify-center items-center relative overflow-hidden"
         style={{ height: "350px" }}
