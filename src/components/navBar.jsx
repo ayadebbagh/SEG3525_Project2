@@ -22,7 +22,7 @@ const Navbar = () => {
         >
           <div className="text-sm font-Paradose" style={{ fontSize: "24px" }}>
             <a
-              href="#responsive-header"
+              href="/"
               className="block mt-4 lg:inline-block lg:mt-0 text-red hover:text-beige mr-4"
             >
               The Spark Collective
@@ -47,7 +47,7 @@ const Navbar = () => {
               Community
             </a>
             <a
-              href="#resource-library"
+              href="/resource-library"
               className="block mt-4 lg:inline-block lg:mt-0 text-red hover:text-beige"
             >
               Resource Library

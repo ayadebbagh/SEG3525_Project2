@@ -1,10 +1,20 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import Homepage from "./pages/Homepage.jsx";
 import "./index.css";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Navbar from "./components/navBar.jsx";
+import Homepage from "./pages/Homepage.jsx";
+import ResourceLibrary from "./pages/ResourceLibrary.jsx";
 
-ReactDOM.createRoot(document.getElementById("root")).render(
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(
   <React.StrictMode>
-    <Homepage />
+    <Router>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Homepage />} />
+        <Route path="/resource-library" element={<ResourceLibrary />} />
+      </Routes>
+    </Router>
   </React.StrictMode>
 );

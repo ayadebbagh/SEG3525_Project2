@@ -10,19 +10,18 @@ import ImageSlider from "../components/fadePictures.jsx";
 function Homepage() {
   return (
     <>
-      <Navbar />
       <div className="bg-lightPink w-full h-screen">
         <div className="flex flex-col justify-center items-center pt-4 px-4 overflow-hidden h-screen w-full relative">
           <img
             src={border}
-            className="object-contain absolute left-0 w-full h-full"
+            className="hidden md:block object-contain absolute left-0 w-full h-full"
             style={{ top: "-50px" }}
           />
           <div className="flex flex-col justify-center items-center h-full w-full px-8 z-10 mt-[-130px] space-y-5">
             <h1 className="text-red font-Texterius text-3xl md:text-6xl lg:text-8xl text-center">
               Find your next project!
             </h1>
-            <div className="flex flex-row justify-center items-center space-x-5 mt-5">
+            <div className="flex flex-col sm:flex-row justify-center items-center space-x-0 sm:space-x-5 space-y-5 sm:space-y-0">
               <ImageSlider
                 images={[
                   "./src/assets/images/1.jpeg",
@@ -101,7 +100,7 @@ function Homepage() {
             </div>
             <div className="absolute bottom-0 text-center">
               <div className=" text-red font-Texterius text-md md:text-xl lg:text-2xl mt-4 w-full">
-                TSP
+                TSC
               </div>
             </div>
           </div>
