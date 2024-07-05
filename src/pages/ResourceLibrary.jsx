@@ -1,16 +1,15 @@
 import React from "react";
 import RedFooter from "../components/redFooter";
 import ImageLinkComponent from "../components/libraryLinks";
-// Ensure the import matches the file name's case
 
 function ResourceLibrary() {
   return (
     <>
-      <div className="bg-beige w-full h-screen justify-center items-center flex-col space-y-5">
-        <div className="text-red font-Texterius text-center text-7xl pt-4">
+      <div className="bg-beige w-full min-h-screen flex flex-col items-center space-y-5 py-4">
+        <div className="text-red font-Texterius text-center text-4xl sm:text-5xl md:text-6xl lg:text-7xl pt-4">
           Resource Library
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 p-2 justify-items-center justify-center gap-x-9 gap-y-5">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 p-4 w-full max-w-screen-xl justify-items-center">
           <ImageLinkComponent
             image="./src/assets/images/rl1.jpeg"
             link="https://www.thesprucecrafts.com/beadwork-basics-4162854"
