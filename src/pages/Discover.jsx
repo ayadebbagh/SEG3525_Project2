@@ -8,7 +8,7 @@ const projects = [
     image: "./src/assets/images/discover8.jpeg",
     title: "Cake jewelry box",
     link: "#",
-    skillLevel: "beginner",
+    skillLevel: "expert",
     category: "jewelry",
   },
   {
@@ -22,7 +22,7 @@ const projects = [
     image: "./src/assets/images/discover2.jpeg",
     title: "Clay bow magnets",
     link: "#",
-    skillLevel: "Beginner",
+    skillLevel: "beginner",
     category: "air-dry clay",
   },
   {
