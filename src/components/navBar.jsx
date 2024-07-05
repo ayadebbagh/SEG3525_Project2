@@ -33,9 +33,8 @@ const Navbar = () => {
             className="flex space-x-4 font-Paradose"
             style={{ fontSize: "24px" }}
           >
-            {/* Assuming the rest of the links ("Discover", "Community", "Resource Library") go here */}
             <a
-              href="#discover"
+              href="/discover"
               className="block mt-4 lg:inline-block lg:mt-0 text-red hover:text-beige"
             >
               Discover

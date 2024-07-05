@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./components/navBar.jsx";
 import Homepage from "./pages/Homepage.jsx";
 import ResourceLibrary from "./pages/ResourceLibrary.jsx";
+import Discover from "./pages/Discover.jsx";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -14,6 +15,7 @@ root.render(
       <Routes>
         <Route path="/" element={<Homepage />} />
         <Route path="/resource-library" element={<ResourceLibrary />} />
+        <Route path="/discover" element={<Discover />} />
       </Routes>
     </Router>
   </React.StrictMode>
