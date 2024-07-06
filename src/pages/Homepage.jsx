@@ -1,10 +1,10 @@
-import pinkFooter from "../assets/images/footerPink.png";
-import facebook from "../assets/images/facebook.png";
-import instagram from "../assets/images/instagram.png";
-import tiktok from "../assets/images/tiktok.png";
-import twitter from "../assets/images/twitter.png";
-import Navbar from "../components/navBar.jsx";
-import border from "../assets/images/border.png";
+import pinkFooter from "/images/footerPink.png";
+import facebook from "/images/facebook.png";
+import instagram from "/images/instagram.png";
+import tiktok from "/images/tiktok.png";
+import twitter from "/images/twitter.png";
+
+import border from "/images/border.png";
 import ImageSlider from "../components/fadePictures.jsx";
 
 function Homepage() {
@@ -23,25 +23,13 @@ function Homepage() {
             </h1>
             <div className="flex flex-col sm:flex-row justify-center items-center space-x-0 sm:space-x-5 space-y-5 sm:space-y-0">
               <ImageSlider
-                images={[
-                  "./src/assets/images/1.jpeg",
-                  "./src/assets/images/2.jpeg",
-                  "./src/assets/images/3.jpeg",
-                ]}
+                images={["/images/1.jpeg", "/images/2.jpeg", "/images/3.jpeg"]}
               />
               <ImageSlider
-                images={[
-                  "./src/assets/images/4.jpeg",
-                  "./src/assets/images/5.jpeg",
-                  "./src/assets/images/6.jpeg",
-                ]}
+                images={["/images/4.jpeg", "/images/5.jpeg", "/images/6.jpeg"]}
               />
               <ImageSlider
-                images={[
-                  "./src/assets/images/7.jpeg",
-                  "./src/assets/images/8.jpeg",
-                  "./src/assets/images/9.jpeg",
-                ]}
+                images={["/images/7.jpeg", "/images/8.jpeg", "/images/9.jpeg"]}
               />
             </div>
             <p className="text-red font-Texterius text-md md:text-lg lg:text-2xl text-center">

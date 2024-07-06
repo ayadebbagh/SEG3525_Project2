@@ -2,67 +2,67 @@ import React, { useState } from "react";
 import RedFooter from "../components/redFooter";
 import ProjectCard from "../components/projectCard";
 import Filter from "../components/filter";
-import discoverbg from "../assets/images/bgDiscover.png";
+import discoverbg from "/images/bgDiscover.png";
 
 const projects = [
   {
-    image: "./src/assets/images/discover8.jpeg",
+    image: "/images/discover8.jpeg",
     title: "Cake jewelry box",
     link: "#",
     skillLevel: "expert",
     category: "jewelry",
   },
   {
-    image: "./src/assets/images/discover1.jpeg",
+    image: "/images/discover1.jpeg",
     title: "Clay pendants",
     link: "#",
     skillLevel: "intermediate",
     category: "jewelry",
   },
   {
-    image: "./src/assets/images/discover2.jpeg",
+    image: "/images/discover2.jpeg",
     title: "Clay bow magnets",
     link: "#",
     skillLevel: "beginner",
     category: "air-dry clay",
   },
   {
-    image: "./src/assets/images/discover3.png",
+    image: "/images/discover3.png",
     title: "Flower rugs",
     link: "#",
     skillLevel: "expert",
     category: "tufting",
   },
   {
-    image: "./src/assets/images/discover10.jpeg",
+    image: "/images/discover10.jpeg",
     title: "Beaded anklet",
     link: "#",
     skillLevel: "beginner",
     category: "jewelry",
   },
   {
-    image: "./src/assets/images/discover5.jpeg",
+    image: "/images/discover5.jpeg",
     title: "Picnic blanket",
     link: "#",
     skillLevel: "intermediate",
     category: "crochet",
   },
   {
-    image: "./src/assets/images/discover6.jpeg",
+    image: "/images/discover6.jpeg",
     title: "Wall decor",
     link: "#",
     skillLevel: "intermediate",
     category: "air-dry clay",
   },
   {
-    image: "./src/assets/images/discover7.jpeg",
+    image: "/images/discover7.jpeg",
     title: "Miffy charms",
     link: "#",
     skillLevel: "intermediate",
     category: "polymer-clay",
   },
   {
-    image: "./src/assets/images/discover9.jpeg",
+    image: "/images/discover9.jpeg",
     title: "Martini scarf",
     link: "#",
     skillLevel: "expert",

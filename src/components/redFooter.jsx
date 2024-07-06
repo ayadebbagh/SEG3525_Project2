@@ -1,9 +1,9 @@
 import React from "react";
-import redFooter from "../assets/images/redFooter.png";
-import facebook from "../assets/images/facebook.png";
-import instagram from "../assets/images/instagram.png";
-import tiktok from "../assets/images/tiktok.png";
-import twitter from "../assets/images/twitter.png";
+import redFooter from "/images/redFooter.png";
+import facebook from "/images/facebook.png";
+import instagram from "/images/instagram.png";
+import tiktok from "/images/tiktok.png";
+import twitter from "/images/twitter.png";
 
 const RedFooter = () => {
   return (
