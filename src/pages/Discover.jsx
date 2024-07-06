@@ -3,6 +3,8 @@ import RedFooter from "../components/redFooter";
 import ProjectCard from "../components/projectCard";
 import Filter from "../components/filter";
 import discoverbg from "/images/bgDiscover.png";
+import Announcement from "../components/annoucement";
+import Challenge from "../components/challenge";
 
 const projects = [
   {
@@ -89,24 +91,56 @@ function Discover() {
       <div className="bg-beige w-full flex flex-col items-center space-y-5 relative">
         <div className="w-full p-6 text-left">
           <div className="text-red font-Texterius text-4xl">
-            This week's featured project
+            This week's featured projects and annoucements
           </div>
         </div>
-        <div className="relative flex justify-center items-center w-full md:w-3/4 lg:w-2/3 xl:w-1/2 mb-8">
-          <div
-            className="absolute inset-0 bg-contain bg-no-repeat bg-center top-6"
-            style={{
-              backgroundImage: `url(${discoverbg})`,
-              transform: "scale(1.55)", // Adjust this value to make the border larger or smaller
-            }}
-          ></div>
-          <iframe
-            className="w-full h-72 md:h-96 lg:h-128 relative "
-            src="https://www.youtube.com/embed/TlBMcexUwjE?si=HpJf35lY-Rq3iNOZ"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen
-          ></iframe>
+        <div className="flex flex-col w-full md:w-3/4 lg:w-5/6 xl:w-11/12 mb-8 space-y-4">
+          {/* First row */}
+          <div className="flex flex-col lg:flex-row space-y-4 lg:space-y-0 lg:space-x-4">
+            <div className="relative w-full lg:w-2/3">
+              <div
+                className="absolute inset-0 bg-contain bg-no-repeat bg-center"
+                style={{
+                  backgroundImage: `url(${discoverbg})`,
+                  transform: "scale(1.05)",
+                }}
+              ></div>
+              <iframe
+                className="w-full h-72 md:h-96 lg:h-128 relative z-10"
+                src="https://www.youtube.com/embed/TlBMcexUwjE?si=HpJf35lY-Rq3iNOZ"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              ></iframe>
+            </div>
+            <div className="w-full lg:w-1/3">
+              <Announcement />
+            </div>
+          </div>
+
+          {/* Second row */}
+          <div className="flex flex-col lg:flex-row space-y-4 lg:space-y-0 lg:space-x-4">
+            <div className="w-full lg:w-1/3">
+              <Challenge />
+            </div>
+            <div className="relative w-full lg:w-2/3">
+              <div
+                className="absolute inset-0 bg-contain bg-no-repeat bg-center"
+                style={{
+                  backgroundImage: `url(${discoverbg})`,
+                  transform: "scale(1.05)",
+                }}
+              ></div>
+              <iframe
+                className="w-full h-72 md:h-96 lg:h-128 relative z-10"
+                src="https://www.youtube.com/embed/9_PLPLiZ99s?si=98XkSVXgtp0iuKq0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowFullScreen
+              ></iframe>
+            </div>
+          </div>
         </div>
+        {/* Rest of your code remains the same */}
+
         <div className="w-full p-6 flex flex-col items-start space-y-4">
           <h2 className="text-red font-Texterius text-left text-4xl mb-4">
             Explore more projects
