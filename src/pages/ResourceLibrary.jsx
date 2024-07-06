@@ -6,7 +6,7 @@ function ResourceLibrary() {
   return (
     <>
       <div className="bg-beige w-full min-h-screen flex flex-col items-center space-y-5 py-4">
-        <div className="text-red font-Texterius text-center text-4xl sm:text-5xl md:text-6xl lg:text-7xl pt-4">
+        <div className="text-red font-Texterius text-center text-4xl sm:text-4xl md:text-5xl lg:text-6xl pt-4">
           Resource Library
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 p-4 w-full max-w-screen-xl justify-items-center">

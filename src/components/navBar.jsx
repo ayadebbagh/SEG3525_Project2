@@ -40,7 +40,7 @@ const Navbar = () => {
               Discover
             </a>
             <a
-              href="#community"
+              href="/community"
               className="block mt-4 lg:inline-block lg:mt-0 text-red hover:text-beige"
             >
               Community

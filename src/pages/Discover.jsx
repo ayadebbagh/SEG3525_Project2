@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import RedFooter from "../components/redFooter";
 import ProjectCard from "../components/projectCard";
 import Filter from "../components/filter";
+import discoverbg from "../assets/images/bgDiscover.png";
 
 const projects = [
   {
@@ -91,9 +92,16 @@ function Discover() {
             This week's featured project
           </div>
         </div>
-        <div className="flex justify-center items-center w-full md:w-3/4 lg:w-2/3 xl:w-1/2 mb-8">
+        <div className="relative flex justify-center items-center w-full md:w-3/4 lg:w-2/3 xl:w-1/2 mb-8">
+          <div
+            className="absolute inset-0 bg-contain bg-no-repeat bg-center top-6"
+            style={{
+              backgroundImage: `url(${discoverbg})`,
+              transform: "scale(1.55)", // Adjust this value to make the border larger or smaller
+            }}
+          ></div>
           <iframe
-            className="w-full h-72 md:h-96 lg:h-128"
+            className="w-full h-72 md:h-96 lg:h-128 relative "
             src="https://www.youtube.com/embed/TlBMcexUwjE?si=HpJf35lY-Rq3iNOZ"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
