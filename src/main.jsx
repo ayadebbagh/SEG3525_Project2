@@ -7,6 +7,7 @@ import Homepage from "./pages/Homepage.jsx";
 import ResourceLibrary from "./pages/ResourceLibrary.jsx";
 import Discover from "./pages/Discover.jsx";
 import Community from "./pages/Community.jsx";
+import Profile from "./pages/Profile.jsx";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -18,6 +19,7 @@ root.render(
         <Route path="/resource-library" element={<ResourceLibrary />} />
         <Route path="/discover" element={<Discover />} />
         <Route path="/community" element={<Community />} />
+        <Route path="/profile" element={<Profile />} />
       </Routes>
     </Router>
   </React.StrictMode>

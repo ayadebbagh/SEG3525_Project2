@@ -98,13 +98,6 @@ function Discover() {
           {/* First row */}
           <div className="flex flex-col lg:flex-row space-y-4 lg:space-y-0 lg:space-x-4">
             <div className="relative w-full lg:w-2/3">
-              <div
-                className="absolute inset-0 bg-contain bg-no-repeat bg-center"
-                style={{
-                  backgroundImage: `url(${discoverbg})`,
-                  transform: "scale(1.05)",
-                }}
-              ></div>
               <iframe
                 className="w-full h-72 md:h-96 lg:h-128 relative z-10"
                 src="https://www.youtube.com/embed/TlBMcexUwjE?si=HpJf35lY-Rq3iNOZ"
@@ -123,13 +116,6 @@ function Discover() {
               <Challenge />
             </div>
             <div className="relative w-full lg:w-2/3">
-              <div
-                className="absolute inset-0 bg-contain bg-no-repeat bg-center"
-                style={{
-                  backgroundImage: `url(${discoverbg})`,
-                  transform: "scale(1.05)",
-                }}
-              ></div>
               <iframe
                 className="w-full h-72 md:h-96 lg:h-128 relative z-10"
                 src="https://www.youtube.com/embed/9_PLPLiZ99s?si=98XkSVXgtp0iuKq0"

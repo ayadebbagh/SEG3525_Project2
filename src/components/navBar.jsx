@@ -51,6 +51,12 @@ const Navbar = () => {
             >
               Resource Library
             </a>
+            <a
+              href="/profile"
+              className="block mt-4 lg:inline-block lg:mt-0 text-red hover:text-beige"
+            >
+              Profile
+            </a>
           </div>
         </div>
       </div>
