@@ -37,7 +37,7 @@ function Homepage() {
               <br /> a vibrant community
             </p>
             <button className="bg-red text-beige font-Texterius text-xl py-3 px-9 rounded-full">
-              <a href="#discover">Explore</a>
+              <a href="/discover">Explore</a>
             </button>
           </div>
         </div>
