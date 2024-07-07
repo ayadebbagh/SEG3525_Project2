@@ -30,7 +30,7 @@ const Navbar = () => {
           </div>
 
           <div
-            className="flex space-x-4 font-Paradose"
+            className="flex space-x-10 font-Paradose"
             style={{ fontSize: "24px" }}
           >
             <a
