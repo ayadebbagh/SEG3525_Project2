@@ -120,9 +120,9 @@ function FAQ() {
   return (
     <>
       <div className="bg-beige w-full min-h-screen flex flex-col items-center py-4">
-        <div className="text-red font-Texterius text-center text-4xl sm:text-4xl md:text-5xl lg:text-6xl pt-4 mb-8">
+        <h1 className="text-red font-Texterius text-center text-4xl sm:text-4xl md:text-5xl lg:text-6xl pt-4 mb-8">
           {translations.title[language]}
-        </div>
+        </h1>
 
         <div className="w-full max-w-6xl px-4 flex flex-col md:flex-row justify-between">
           {/* FAQ Dropdowns */}
@@ -132,7 +132,10 @@ function FAQ() {
                 key={index}
                 className="mb-4 bg-lightPink text-red font-Texterius rounded-full shadow-md p-3"
               >
-                <summary className="px-3 py-2 font-semibold cursor-pointer focus:outline-none">
+                <summary
+                  className="px-3 py-2 font-semibold cursor-pointer focus:outline-none"
+                  aria-expanded="false"
+                >
                   {item.question[language]}
                 </summary>
                 <p
@@ -150,7 +153,11 @@ function FAQ() {
             <h2 className="text-red font-Texterius text-2xl mb-4">
               {translations.moreQuestions[language]}
             </h2>
-            <form onSubmit={handleSubmit} className="space-y-4">
+            <form
+              onSubmit={handleSubmit}
+              className="space-y-4"
+              aria-labelledby="contact-form"
+            >
               <div>
                 <label
                   htmlFor="name"
@@ -165,7 +172,12 @@ function FAQ() {
                   onChange={(e) => setName(e.target.value)}
                   className="w-full px-3 py-2 border rounded-md text-red font-Texterius"
                   required
+                  aria-required="true"
+                  aria-describedby="name-desc"
                 />
+                <span id="name-desc" className="sr-only">
+                  {translations.name[language]}
+                </span>
               </div>
               <div>
                 <label
@@ -181,7 +193,12 @@ function FAQ() {
                   onChange={(e) => setEmail(e.target.value)}
                   className="w-full px-3 py-2 border rounded-md text-red font-Texterius"
                   required
+                  aria-required="true"
+                  aria-describedby="email-desc"
                 />
+                <span id="email-desc" className="sr-only">
+                  {translations.email[language]}
+                </span>
               </div>
               <div>
                 <label
@@ -197,7 +214,12 @@ function FAQ() {
                   className="w-full px-3 py-2 border rounded-md text-red font-Texterius"
                   rows="4"
                   required
+                  aria-required="true"
+                  aria-describedby="question-desc"
                 ></textarea>
+                <span id="question-desc" className="sr-only">
+                  {translations.yourQuestion[language]}
+                </span>
               </div>
               <button
                 type="submit"

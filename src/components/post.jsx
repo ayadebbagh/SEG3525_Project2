@@ -41,8 +41,8 @@ const Post = ({
   };
 
   return (
-    <div className="flex flex-col items-center space-y-2 p-4 bg-lightPink rounded-lg shadow-md">
-      <div className="flex items-center space-x-2">
+    <div className="flex flex-col space-y-2">
+      <div className="flex items-center space-x-2 mb-2">
         <img
           src={profilePicture}
           alt={username}
@@ -50,30 +50,42 @@ const Post = ({
         />
         <span className="text-red font-Texterius">@{username}</span>
       </div>
-      <img src={postPicture} alt={caption} className="w-full rounded-lg" />
-      <p className="text-center text-red font-Texterius">
-        {language === "EN" ? caption : captionFR}
-      </p>
-      <div className="flex justify-between w-full px-4">
-        <button onClick={handleLike}>
-          {liked ? <FaHeart className="text-red-500" /> : <FaRegHeart />}
-        </button>
-        <button onClick={handleSave}>
-          {saved ? <FaBookmark className="text-red-500" /> : <FaRegBookmark />}
-        </button>
-        <div className="flex items-center">
-          <FaCommentAlt />
-          <span className="ml-1">{comments.length}</span>
+      <div className="p-4 bg-lightPink rounded-lg shadow-md w-full flex flex-col items-center">
+        <div className="w-full h-64 overflow-hidden rounded-lg">
+          <img
+            src={postPicture}
+            alt={caption}
+            className="w-full h-full object-cover"
+          />
         </div>
+        <p className="text-center text-red font-Texterius mt-2">
+          {language === "EN" ? caption : captionFR}
+        </p>
+        <div className="flex justify-between w-full px-4 mt-2">
+          <button onClick={handleLike}>
+            {liked ? <FaHeart className="text-red-500" /> : <FaRegHeart />}
+          </button>
+          <button onClick={handleSave}>
+            {saved ? (
+              <FaBookmark className="text-red-500" />
+            ) : (
+              <FaRegBookmark />
+            )}
+          </button>
+          <div className="flex items-center">
+            <FaCommentAlt />
+            <span className="ml-1">{comments.length}</span>
+          </div>
+        </div>
+        <input
+          type="text"
+          value={comment}
+          onChange={handleCommentChange}
+          onKeyPress={handleCommentKeyPress}
+          placeholder="Comment..."
+          className="w-full p-2 border rounded-lg placeholder-red placeholder-opacity-50 font-Texterius mt-2"
+        />
       </div>
-      <input
-        type="text"
-        value={comment}
-        onChange={handleCommentChange}
-        onKeyPress={handleCommentKeyPress}
-        placeholder="Comment..."
-        className="w-full p-2 border rounded-lg placeholder-red placeholder-opacity-50 font-Texterius"
-      />
     </div>
   );
 };

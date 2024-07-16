@@ -1,5 +1,5 @@
-import RedFooter from "../components/redFooter";
 import React from "react";
+import RedFooter from "../components/redFooter";
 import Post from "../components/post";
 import { useLanguage } from "../components/LanguageProvider";
 
@@ -77,11 +77,11 @@ function Community() {
 
   return (
     <>
-      <div className="bg-beige min-h-screen py-10">
+      <div className="bg-beige min-h-screen py-10 px-20">
         <h1 className="text-red font-Texterius text-4xl sm:text-4xl md:text-5xl lg:text-6xl text-center mb-10">
           {language === "EN" ? community.EN : community.FR}
         </h1>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 px-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {posts.map((post, index) => (
             <Post
               key={index}
@@ -98,4 +98,5 @@ function Community() {
     </>
   );
 }
+
 export default Community;

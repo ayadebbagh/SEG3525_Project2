@@ -54,10 +54,10 @@ const RedFooter = () => {
             </div>
           </div>
           <div className=" absolute bottom-20 flex justify-center items-center space-x-4">
-            <img src={instagram} className="w-7 h-7" />
-            <img src={facebook} className="w-7 h-7" />
-            <img src={tiktok} className="w-7 h-7" />
-            <img src={twitter} className="w-7 h-7" />
+            <img src={instagram} className="w-7 h-7" alt="instagram logo" />
+            <img src={facebook} className="w-7 h-7" alt="facebook logo" />
+            <img src={tiktok} className="w-7 h-7" alt="tiktok logo" />
+            <img src={twitter} className="w-7 h-7" alt="twitter logo" />
           </div>
           <div className="absolute bottom-10 text-center">
             <div className=" text-red font-Texterius text-md md:text-xl lg:text-2xl mt-4 w-full">

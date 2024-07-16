@@ -16,7 +16,7 @@ const Navbar = () => {
   };
   const library = {
     EN: "Resource Library",
-    FR: "Bilbliotheques de ressources",
+    FR: "Bilbliotheque de ressources",
   };
   const profile = {
     EN: "Profile",
