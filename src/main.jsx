@@ -8,19 +8,24 @@ import ResourceLibrary from "./pages/ResourceLibrary.jsx";
 import Discover from "./pages/Discover.jsx";
 import Community from "./pages/Community.jsx";
 import Profile from "./pages/Profile.jsx";
+import FAQ from "./pages/FAQ.jsx";
+import { LanguageProvider } from "./components/LanguageProvider.jsx";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <Router>
-      <Navbar />
-      <Routes>
-        <Route path="/" element={<Homepage />} />
-        <Route path="/resource-library" element={<ResourceLibrary />} />
-        <Route path="/discover" element={<Discover />} />
-        <Route path="/community" element={<Community />} />
-        <Route path="/profile" element={<Profile />} />
-      </Routes>
-    </Router>
+    <LanguageProvider>
+      <Router>
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Homepage />} />
+          <Route path="/resource-library" element={<ResourceLibrary />} />
+          <Route path="/discover" element={<Discover />} />
+          <Route path="/community" element={<Community />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="faq" element={<FAQ />} />
+        </Routes>
+      </Router>
+    </LanguageProvider>
   </React.StrictMode>
 );

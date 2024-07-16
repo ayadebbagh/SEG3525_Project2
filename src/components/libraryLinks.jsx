@@ -1,6 +1,8 @@
 import React from "react";
+import { useLanguage } from "./LanguageProvider";
 
-const ImageLinkComponent = ({ image, link, text }) => {
+const ImageLinkComponent = ({ image, link, text, textFR }) => {
+  const { language } = useLanguage();
   return (
     <a
       href={link}
@@ -8,7 +10,7 @@ const ImageLinkComponent = ({ image, link, text }) => {
     >
       <img
         src={image}
-        alt={text}
+        alt={language === "FR" ? textFR : text}
         className="w-full h-full object-cover"
         style={{ filter: "drop-shadow(11px 11px 0px #F2BAC9)" }}
       />
@@ -20,7 +22,7 @@ const ImageLinkComponent = ({ image, link, text }) => {
               "2px 2px 0 #8C3B51, -2px -2px 0 #8C3B51, 2px -2px 0 #8C3B51, -2px 2px 0 #8C3B51, 0px 2px 0 #8C3B51, 2px 0px 0 #8C3B51, -2px 0px 0 #8C3B51, 0px -2px 0 #8C3B51",
           }}
         >
-          {text}
+          {language === "FR" ? textFR : text}
         </span>
       </div>
     </a>

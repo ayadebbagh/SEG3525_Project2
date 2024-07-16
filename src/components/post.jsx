@@ -6,12 +6,20 @@ import {
   FaRegBookmark,
   FaCommentAlt,
 } from "react-icons/fa";
+import { useLanguage } from "./LanguageProvider";
 
-const Post = ({ postPicture, caption, profilePicture, username }) => {
+const Post = ({
+  postPicture,
+  caption,
+  captionFR,
+  profilePicture,
+  username,
+}) => {
   const [liked, setLiked] = useState(false);
   const [saved, setSaved] = useState(false);
   const [comment, setComment] = useState("");
   const [comments, setComments] = useState([]);
+  const { language } = useLanguage();
 
   const handleLike = () => {
     setLiked(!liked);
@@ -43,7 +51,9 @@ const Post = ({ postPicture, caption, profilePicture, username }) => {
         <span className="text-red font-Texterius">@{username}</span>
       </div>
       <img src={postPicture} alt={caption} className="w-full rounded-lg" />
-      <p className="text-center text-red font-Texterius">{caption}</p>
+      <p className="text-center text-red font-Texterius">
+        {language === "EN" ? caption : captionFR}
+      </p>
       <div className="flex justify-between w-full px-4">
         <button onClick={handleLike}>
           {liked ? <FaHeart className="text-red-500" /> : <FaRegHeart />}

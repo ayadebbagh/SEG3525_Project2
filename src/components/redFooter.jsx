@@ -4,8 +4,18 @@ import facebook from "/images/facebook.png";
 import instagram from "/images/instagram.png";
 import tiktok from "/images/tiktok.png";
 import twitter from "/images/twitter.png";
+import { useLanguage } from "../components/LanguageProvider.jsx";
 
 const RedFooter = () => {
+  const { language } = useLanguage();
+  const contact = {
+    EN: "Contact us:\nTheSparkCo@gmail.com\n(613) 123-4567",
+    FR: "Contactez-nous:\nTheSparkCo@gmail.com\n(613) 123-4567",
+  };
+  const love = {
+    EN: "Made with love by\nThe Spark Collective team!",
+    FR: "Fait avec amour par\nl'équipe de The Spark Collective!",
+  };
   return (
     <div
       className="bg-lightPink w-screen flex justify-center items-center relative overflow-hidden"
@@ -26,11 +36,10 @@ const RedFooter = () => {
                 minWidth: "250px",
                 marginLeft: "auto",
                 marginRight: "auto",
+                whiteSpace: "pre-line",
               }}
             >
-              Contact us: <br />
-              TheSparkCo@gmail.com <br />
-              (613) 123-4567
+              {language === "EN" ? contact.EN : contact.FR}
             </div>
             <div
               className="text-left md:ml-20 lg:ml-20 text-red font-Texterius text-md md:text-xl lg:text-2xl whitespace-nowrap mb-4 md:mb-4 pl-9"
@@ -38,10 +47,10 @@ const RedFooter = () => {
                 minWidth: "250px",
                 marginLeft: "auto",
                 marginRight: "auto",
+                whiteSpace: "pre-line",
               }}
             >
-              Made with love by <br />
-              The Spark Collective team!
+              {language === "EN" ? love.EN : love.FR}
             </div>
           </div>
           <div className=" absolute bottom-20 flex justify-center items-center space-x-4">

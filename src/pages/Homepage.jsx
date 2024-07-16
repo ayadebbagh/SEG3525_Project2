@@ -6,8 +6,34 @@ import twitter from "/images/twitter.png";
 
 import border from "/images/border.png";
 import ImageSlider from "../components/fadePictures.jsx";
+import { useLanguage } from "../components/LanguageProvider.jsx";
 
 function Homepage() {
+  const { language } = useLanguage();
+  // Use the hook to access language and toggleLanguage
+
+  const title = {
+    EN: "Find your next project!",
+    FR: "Des projets pour tous!",
+  };
+  const description = {
+    EN: "Discover and share creative craft projects with \n a vibrant community",
+    FR: "Découvrez et partagez des projets créatifs avec \n une communauté dynamique",
+  };
+
+  const discover = {
+    EN: "Discover",
+    FR: "Découvrir",
+  };
+  const contact = {
+    EN: "Contact us:\nTheSparkCo@gmail.com\n(613) 123-4567",
+    FR: "Contactez-nous:\nTheSparkCo@gmail.com\n(613) 123-4567",
+  };
+  const love = {
+    EN: "Made with love by\nThe Spark Collective team!",
+    FR: "Fait avec amour par\nl'équipe de The Spark Collective!",
+  };
+
   return (
     <>
       <div className="bg-lightPink w-full h-screen">
@@ -19,7 +45,7 @@ function Homepage() {
           />
           <div className="flex flex-col justify-center items-center h-full w-full px-8 z-10 mt-[-130px] space-y-5">
             <h1 className="text-red font-Texterius text-3xl md:text-6xl lg:text-8xl text-center">
-              Find your next project!
+              {language === "EN" ? title.EN : title.FR}
             </h1>
             <div className="flex flex-col sm:flex-row justify-center items-center space-x-0 sm:space-x-5 space-y-5 sm:space-y-0">
               <ImageSlider
@@ -32,12 +58,16 @@ function Homepage() {
                 images={["/images/7.jpeg", "/images/8.jpeg", "/images/9.jpeg"]}
               />
             </div>
-            <p className="text-red font-Texterius text-md md:text-lg lg:text-2xl text-center">
-              Discover and share creative craft projects with
-              <br /> a vibrant community
+            <p
+              className="text-red font-Texterius text-md md:text-lg lg:text-2xl text-center"
+              style={{ whiteSpace: "pre-line" }}
+            >
+              {language === "EN" ? description.EN : description.FR}
             </p>
             <button className="bg-red text-beige font-Texterius text-xl py-3 px-9 rounded-full">
-              <a href="/discover">Explore</a>
+              <a href="/discover">
+                {language === "EN" ? discover.EN : discover.FR}
+              </a>
             </button>
           </div>
         </div>
@@ -62,11 +92,10 @@ function Homepage() {
                   minWidth: "250px",
                   marginLeft: "auto",
                   marginRight: "auto",
+                  whiteSpace: "pre-line",
                 }}
               >
-                Contact us: <br />
-                TheSparkCo@gmail.com <br />
-                (613) 123-4567
+                {language === "EN" ? contact.EN : contact.FR}
               </div>
               <div
                 className="text-left md:ml-20 lg:ml-20 text-red font-Texterius text-md md:text-xl lg:text-2xl whitespace-nowrap mb-4 md:mb-4 pl-9"
@@ -74,10 +103,10 @@ function Homepage() {
                   minWidth: "250px",
                   marginLeft: "auto",
                   marginRight: "auto",
+                  whiteSpace: "pre-line",
                 }}
               >
-                Made with love by <br />
-                The Spark Collective team!
+                {language === "EN" ? love.EN : love.FR}
               </div>
             </div>
             <div className=" absolute bottom-20 flex justify-center items-center space-x-4">
@@ -97,4 +126,5 @@ function Homepage() {
     </>
   );
 }
+
 export default Homepage;

@@ -1,7 +1,6 @@
-// src/ProjectCard.js
 import React from "react";
 
-const ProjectCard = ({ project }) => {
+const ProjectCard = ({ project, title }) => {
   return (
     <div
       className="project-card "
@@ -10,11 +9,11 @@ const ProjectCard = ({ project }) => {
     >
       <img
         src={project.image}
-        alt={project.title}
+        alt={title}
         className="w-80 h-80 object-cover rounded-lg"
       />
       <h3 className="text-red text-lg font-Texterius text-center">
-        {project.title}
+        {title} {/* Display the translated title */}
       </h3>
       <div className="text-center">
         <a className="text-red text-lg font-Texterius" href={project.link}>

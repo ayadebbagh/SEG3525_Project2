@@ -1,9 +1,28 @@
 import React, { useState } from "react";
 import { FiMenu } from "react-icons/fi";
 import { AiOutlineClose } from "react-icons/ai";
+import { useLanguage } from "./LanguageProvider";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { language, toggleLanguage } = useLanguage(); // Use the hook to access language and toggleLanguage
+  const discover = {
+    EN: "Discover",
+    FR: "Découvrir",
+  };
+  const community = {
+    EN: "Community",
+    FR: "Communaute",
+  };
+  const library = {
+    EN: "Resource Library",
+    FR: "Bilbliotheques de ressources",
+  };
+  const profile = {
+    EN: "Profile",
+    FR: "Profil",
+  };
+
   return (
     <nav className="bg-lightPink p-4">
       <div className="flex justify-between items-start pt-2 px-4 overflow-hidden">
@@ -37,26 +56,38 @@ const Navbar = () => {
               href="/discover"
               className="block mt-4 lg:inline-block lg:mt-0 text-red hover:text-beige"
             >
-              Discover
+              {language === "EN" ? discover.EN : discover.FR}
             </a>
             <a
               href="/community"
               className="block mt-4 lg:inline-block lg:mt-0 text-red hover:text-beige"
             >
-              Community
+              {language === "EN" ? community.EN : community.FR}
             </a>
             <a
               href="/resource-library"
               className="block mt-4 lg:inline-block lg:mt-0 text-red hover:text-beige"
             >
-              Resource Library
+              {language === "EN" ? library.EN : library.FR}
             </a>
             <a
               href="/profile"
               className="block mt-4 lg:inline-block lg:mt-0 text-red hover:text-beige"
             >
-              Profile
+              {language === "EN" ? profile.EN : profile.FR}
             </a>
+            <a
+              href="/faq"
+              className="block mt-4 lg:inline-block lg:mt-0 text-red hover:text-beige"
+            >
+              FAQ
+            </a>
+            <button
+              onClick={toggleLanguage}
+              className="px-4 bg-red rounded-full text-beige"
+            >
+              {language === "EN" ? "English" : "Français"}
+            </button>
           </div>
         </div>
       </div>
