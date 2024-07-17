@@ -18,7 +18,7 @@ const ProjectCard = ({ project, title }) => {
       <div className="text-center">
         <a
           className="text-red text-lg font-Texterius underline"
-          href={project.link}
+          href="/coming-soon"
         >
           Tutorial here
         </a>

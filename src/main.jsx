@@ -9,6 +9,7 @@ import Discover from "./pages/Discover.jsx";
 import Community from "./pages/Community.jsx";
 import Profile from "./pages/Profile.jsx";
 import FAQ from "./pages/FAQ.jsx";
+import ComingSoon from "./pages/ComingSoon.jsx";
 import { LanguageProvider } from "./components/LanguageProvider.jsx";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
@@ -24,6 +25,7 @@ root.render(
           <Route path="/community" element={<Community />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="faq" element={<FAQ />} />
+          <Route path="coming-soon" element={<ComingSoon />} />
         </Routes>
       </Router>
     </LanguageProvider>

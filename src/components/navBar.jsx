@@ -8,7 +8,7 @@ const Navbar = () => {
   const { language, toggleLanguage } = useLanguage(); // Use the hook to access language and toggleLanguage
   const discover = {
     EN: "Discover",
-    FR: "Découvrir",
+    FR: "Decouvrir",
   };
   const community = {
     EN: "Community",

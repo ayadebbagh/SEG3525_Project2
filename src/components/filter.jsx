@@ -34,7 +34,7 @@ const Filter = ({
       },
     },
     FR: {
-      searchPlaceholder: "Rechercher des métiers",
+      searchPlaceholder: "Rechercher des projets",
       categoryLabel: "Catégorie",
       skillLevelLabel: "Niveau de compétence",
       categoryOptions: {

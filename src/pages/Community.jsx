@@ -72,7 +72,7 @@ function Community() {
   ];
   const community = {
     EN: "Community",
-    FR: "Communaute",
+    FR: "Communauté",
   };
 
   return (

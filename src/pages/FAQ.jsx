@@ -2,12 +2,22 @@ import React from "react";
 import RedFooter from "../components/redFooter";
 import { useState } from "react";
 import { useLanguage } from "../components/LanguageProvider.jsx";
+import { FaTimes } from "react-icons/fa";
 
 function FAQ() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [question, setQuestion] = useState("");
+  const [showNotification, setShowNotification] = useState(false);
   const { language } = useLanguage();
+
+  const displayNotification = () => {
+    setShowNotification(true);
+  };
+
+  const handleCloseNotification = () => {
+    setShowNotification(false);
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -15,8 +25,8 @@ function FAQ() {
     setName("");
     setEmail("");
     setQuestion("");
+    displayNotification();
   };
-
   const translations = {
     title: {
       EN: "FAQ",
@@ -41,6 +51,10 @@ function FAQ() {
     submit: {
       EN: "Submit",
       FR: "Soumettre",
+    },
+    notificationSuccess: {
+      EN: "Your question has been submitted successfully!",
+      FR: "Votre question a été soumise avec succès !",
     },
   };
 
@@ -230,6 +244,16 @@ function FAQ() {
             </form>
           </div>
         </div>
+        {showNotification && (
+          <div className="fixed top-4 right-4 bg-red text-lightPink font-Texterius p-4 rounded-lg shadow-md z-50 flex items-center">
+            <span className="flex-grow">
+              {translations.notificationSuccess[language]}
+            </span>
+            <button onClick={handleCloseNotification}>
+              <FaTimes className="text-lightPink" />
+            </button>
+          </div>
+        )}
       </div>
 
       <RedFooter />
