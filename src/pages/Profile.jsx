@@ -1,12 +1,72 @@
 import ProfilePicture from "/images/profilepic1.jpeg";
 import RecentProject1 from "/images/community5.jpeg";
 import RecentProject2 from "/images/community6.jpeg";
-import RecentProject3 from "/images/community7.jpeg"; // Add more project images
+import RecentProject3 from "/images/community7.jpeg";
 import RecentProject4 from "/images/community8.jpeg";
-import { PlusIcon } from "@heroicons/react/solid"; // Import the PlusIcon from Heroicons React v2
+import { PlusIcon, MinusIcon } from "@heroicons/react/solid";
 import RedFooter from "../components/redFooter";
 import { useLanguage } from "../components/LanguageProvider";
 import React, { useState, useEffect } from "react";
+import { FaTimes } from "react-icons/fa";
+
+const AddPostPopup = ({ onClose, onPost }) => {
+  const [file, setFile] = useState(null);
+  const [caption, setCaption] = useState("");
+
+  const handleFileChange = (e) => {
+    setFile(e.target.files[0]);
+  };
+
+  const handleCaptionChange = (e) => {
+    setCaption(e.target.value);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (file) {
+      const fileUrl = URL.createObjectURL(file);
+      onPost(fileUrl, caption);
+    }
+    onClose();
+  };
+
+  return (
+    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+      <div className="bg-lightPink p-6 rounded-lg shadow-md">
+        <h2 className="text-red font-Texterius text-2xl mb-4">Add New Post</h2>
+        <form onSubmit={handleSubmit}>
+          <input
+            type="file"
+            accept="image/*"
+            onChange={handleFileChange}
+            className="mb-4"
+          />
+          <textarea
+            value={caption}
+            onChange={handleCaptionChange}
+            placeholder="Write a caption..."
+            className="w-full p-2 mb-4 rounded-lg border font-Texterius text-red"
+          ></textarea>
+          <div className="flex justify-end">
+            <button
+              type="button"
+              onClick={onClose}
+              className="bg-beige text-red px-4 py-2 rounded-lg mr-2 font-Texterius"
+            >
+              Cancel
+            </button>
+            <button
+              type="submit"
+              className="bg-red text-beige px-4 py-2 rounded-lg font-Texterius"
+            >
+              Post
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  );
+};
 
 const ProfilePage = () => {
   const { language } = useLanguage();
@@ -16,29 +76,43 @@ const ProfilePage = () => {
   const [maxTime, setMaxTime] = useState("");
   const [date, setDate] = useState("");
   const [showNotification, setShowNotification] = useState(false);
+  const [showPopup, setShowPopup] = useState(false);
+  const [recentProjects, setRecentProjects] = useState([
+    RecentProject1,
+    RecentProject2,
+    RecentProject3,
+    RecentProject4,
+  ]);
+
   const notificationSuccess = {
     EN: "Meeting successfully scheduled!",
     FR: "Réunion programmée avec succès !",
   };
 
+  const [progressBars, setProgressBars] = useState([
+    { name: "Crochet dress", progress: 60 },
+    { name: "Jewelry tray", progress: 80 },
+    { name: "Clay keychain charms", progress: 33 },
+  ]);
+
   const handleTimeChange = (e) => {
     const selectedTime = e.target.value;
-    const [hours, minutes] = selectedTime.split(":");
-    const date = new Date();
-    date.setHours(parseInt(hours, 10));
-    date.setMinutes(parseInt(minutes, 10));
+    const newDate = new Date();
+    newDate.setHours(parseInt(selectedTime.split(":")[0], 10));
+    newDate.setMinutes(parseInt(selectedTime.split(":")[1], 10));
 
-    if (date.getHours() < 9) {
+    if (newDate.getHours() < 9) {
       setTime("09:00");
-    } else if (date.getHours() >= 18) {
+    } else if (newDate.getHours() >= 18) {
       setTime("18:00");
     } else {
       setTime(selectedTime);
     }
   };
+
   useEffect(() => {
     const today = new Date();
-    today.setDate(today.getDate() + 1); // Set to tomorrow
+    today.setDate(today.getDate() + 1);
     const yyyy = today.getFullYear();
     const mm = String(today.getMonth() + 1).padStart(2, "0");
     const dd = String(today.getDate()).padStart(2, "0");
@@ -50,53 +124,44 @@ const ProfilePage = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("Submitted:", { date, time });
-
-    // Clear the fields
     setDate("");
     setTime("09:00");
-
-    // Show notification
     setShowNotification(true);
-
-    // Hide notification after 3 seconds
-    setTimeout(() => {
-      setShowNotification(false);
-    }, 3000);
   };
 
-  const progress = {
-    EN: "Progress",
-    FR: "Progrès",
+  const handleCloseNotification = () => {
+    setShowNotification(false);
   };
-  const needHelp = {
-    EN: "Need help starting out?",
-    FR: "Besoin d'aide pour commencer?",
+
+  const handleAddProgress = (index) => {
+    const updatedProgressBars = [...progressBars];
+    updatedProgressBars[index].progress = Math.min(
+      100,
+      updatedProgressBars[index].progress + 10
+    );
+    setProgressBars(updatedProgressBars);
   };
-  const submit = {
-    EN: "Submit",
-    FR: "Soumettre",
+
+  const handleRemoveProgress = (index) => {
+    const updatedProgressBars = [...progressBars];
+    updatedProgressBars[index].progress = Math.max(
+      0,
+      updatedProgressBars[index].progress - 10
+    );
+    setProgressBars(updatedProgressBars);
   };
-  const crochetDress = {
-    EN: "Crochet dress",
-    FR: "Robe au crochet",
+
+  const handleAddPostClick = () => {
+    setShowPopup(true);
   };
-  const jewelryTray = {
-    EN: "Jewelry tray",
-    FR: "Plateau à bijoux",
-  };
-  const clayKeychainCharms = {
-    EN: "Clay keychain charms",
-    FR: "Porte-clés en argile",
-  };
-  const meeting = {
-    EN: "Schedule a 1-on-1 virtual meeting with one of our craft experts to guide you on your journey!",
-    FR: "Planifiez une réunion virtuelle en tête-à-tête avec l'un de nos experts en artisanat pour vous guider dans votre parcours!",
+
+  const handleNewPost = (fileUrl, caption) => {
+    setRecentProjects((prevProjects) => [fileUrl, ...prevProjects.slice(0, 3)]);
   };
 
   return (
     <>
       <div className="bg-beige p-6 min-h-screen relative">
-        {/* Top Section: Profile Info */}
         <div className="flex items-center space-x-4 mb-6">
           <img
             src={ProfilePicture}
@@ -109,52 +174,55 @@ const ProfilePage = () => {
           </div>
         </div>
 
-        {/* Bottom Section: Split into two columns */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-          {/* Left Column: Progress and Help Sections */}
           <div className="flex flex-col space-y-6">
-            {/* Progress Section */}
             <div className="bg-lightPink p-4 rounded-lg shadow-md">
               <div className="text-red font-Texterius text-2xl mb-4">
-                {language === "EN" ? progress.EN : progress.FR}
+                {language === "EN" ? "Progress" : "Progrès"}
               </div>
               <div className="space-y-4">
-                <div>
-                  <div className="text-red font-Texterius text-base mb-1">
-                    {language === "EN" ? crochetDress.EN : crochetDress.FR}
+                {progressBars.map((item, index) => (
+                  <div key={index}>
+                    <div className="text-red font-Texterius text-base mb-1">
+                      {language === "EN" ? item.name : item.name}
+                    </div>
+                    <div className="flex items-center">
+                      <div className="w-full bg-beige h-5 rounded-lg overflow-hidden">
+                        <div
+                          className="bg-red h-full"
+                          style={{ width: `${item.progress}%` }}
+                        ></div>
+                      </div>
+                      <div className="flex items-center space-x-2 ml-2">
+                        <button
+                          onClick={() => handleRemoveProgress(index)}
+                          className="text-red hover:text-red-dark focus:outline-none"
+                        >
+                          <MinusIcon className="h-4 w-4" />
+                        </button>
+                        <button
+                          onClick={() => handleAddProgress(index)}
+                          className="text-green hover:text-green-dark focus:outline-none"
+                        >
+                          <PlusIcon className="h-4 w-4" />
+                        </button>
+                      </div>
+                    </div>
                   </div>
-                  <div className="w-full bg-beige h-5 rounded-lg overflow-hidden">
-                    <div className="bg-red h-full w-3/5"></div>
-                  </div>
-                </div>
-                <div>
-                  <div className="text-red font-Texterius text-base mb-1">
-                    {language === "EN" ? jewelryTray.EN : jewelryTray.FR}
-                  </div>
-                  <div className="w-full bg-beige h-5 rounded-lg overflow-hidden">
-                    <div className="bg-red h-full w-4/5"></div>
-                  </div>
-                </div>
-                <div>
-                  <div className="text-red font-Texterius text-base mb-1">
-                    {language === "EN"
-                      ? clayKeychainCharms.EN
-                      : clayKeychainCharms.FR}
-                  </div>
-                  <div className="w-full bg-beige h-5 rounded-lg overflow-hidden">
-                    <div className="bg-red h-full w-1/3"></div>
-                  </div>
-                </div>
+                ))}
               </div>
             </div>
-            {/* Help Section */}
             <div className="bg-lightPink p-4 rounded-lg shadow-md flex flex-col sm:flex-row justify-between items-center space-y-4 sm:space-y-0 sm:space-x-4">
               <div className="text-red font-Texterius text-center">
                 <div className="text-3xl">
-                  {language === "EN" ? needHelp.EN : needHelp.FR}
+                  {language === "EN"
+                    ? "Need help starting out?"
+                    : "Besoin d'aide pour commencer?"}
                 </div>
                 <div className="text-base">
-                  {language === "EN" ? meeting.EN : meeting.FR}
+                  {language === "EN"
+                    ? "Schedule a 1-on-1 virtual meeting with one of our craft experts to guide you on your journey!"
+                    : "Planifiez une réunion virtuelle en tête-à-tête avec l'un de nos experts en artisanat pour vous guider dans votre parcours!"}
                 </div>
               </div>
               <form onSubmit={handleSubmit} className="flex flex-col space-y-2">
@@ -179,47 +247,27 @@ const ProfilePage = () => {
                   type="submit"
                   className="bg-red text-beige px-4 py-2 font-Texterius rounded-lg"
                 >
-                  {language === "EN" ? submit.EN : submit.FR}
+                  {language === "EN" ? "Submit" : "Soumettre"}
                 </button>
               </form>
             </div>
           </div>
 
-          {/* Right Column: Recent Projects Section */}
           <div className="grid grid-cols-2 gap-4">
-            <div>
-              <img
-                src={RecentProject1}
-                alt="Recent Project 1"
-                className="w-full h-56 object-cover rounded-lg"
-              />
-            </div>
-            <div>
-              <img
-                src={RecentProject2}
-                alt="Recent Project 2"
-                className="w-full h-56 object-cover rounded-lg"
-              />
-            </div>
-            <div>
-              <img
-                src={RecentProject3}
-                alt="Recent Project 3"
-                className="w-full h-56 object-cover rounded-lg"
-              />
-            </div>
-            <div>
-              <img
-                src={RecentProject4}
-                alt="Recent Project 4"
-                className="w-full h-56 object-cover rounded-lg"
-              />
-            </div>
+            {recentProjects.map((project, index) => (
+              <div key={index}>
+                <img
+                  src={project}
+                  alt={`Recent Project ${index + 1}`}
+                  className="w-full h-56 object-cover rounded-lg"
+                />
+              </div>
+            ))}
           </div>
         </div>
 
-        {/* Plus icon for adding new posts */}
         <button
+          onClick={handleAddPostClick}
           className="absolute bottom-12 lg:bottom-24 right-6 lg:right-12 bg-red text-white rounded-full p-2 shadow-md hover:bg-opacity-80 focus:outline-none"
           aria-label="Add New Post"
         >
@@ -227,15 +275,26 @@ const ProfilePage = () => {
         </button>
 
         {showNotification && (
-          <div className="fixed top-4 right-4 bg-red text-lightPink font-Texterius p-4 rounded-lg shadow-md z-50">
-            {language === "EN"
-              ? notificationSuccess.EN
-              : notificationSuccess.FR}
+          <div className="fixed top-4 right-4 bg-red text-lightPink font-Texterius p-4 rounded-lg shadow-md z-50 flex items-center">
+            <span className="flex-grow">
+              {language === "EN"
+                ? notificationSuccess.EN
+                : notificationSuccess.FR}
+            </span>
+            <button onClick={handleCloseNotification}>
+              <FaTimes className="text-lightPink" />
+            </button>
           </div>
+        )}
+
+        {showPopup && (
+          <AddPostPopup
+            onClose={() => setShowPopup(false)}
+            onPost={handleNewPost}
+          />
         )}
       </div>
 
-      {/* RedFooter Component */}
       <RedFooter />
     </>
   );

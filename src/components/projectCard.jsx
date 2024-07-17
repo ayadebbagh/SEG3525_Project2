@@ -16,7 +16,10 @@ const ProjectCard = ({ project, title }) => {
         {title} {/* Display the translated title */}
       </h3>
       <div className="text-center">
-        <a className="text-red text-lg font-Texterius" href={project.link}>
+        <a
+          className="text-red text-lg font-Texterius underline"
+          href={project.link}
+        >
           Tutorial here
         </a>
       </div>
